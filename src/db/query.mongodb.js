@@ -84,6 +84,37 @@ db.createCollection("inventarios", {
     }
 })
 
+use('db_bodegas');
+db.createCollection("historiales", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "cantidad", "id_bodega_origen", "id_bodega_destino", "id_inventario"],
+            properties: {
+                id: { bsonType: "int", description: "'id' debe ser un entero y es requerido" },
+                cantidad: { bsonType: "int", description: "'cantidad' debe ser un entero y es requerido" },
+                id_bodega_origen: { bsonType: "int", description: "'id' debe ser un entero y es requerido" },
+                id_bodega_destino: { bsonType: "int", description: "'id' debe ser un entero y es requerido" },
+                id_inventario: { bsonType: "int", description: "'id' debe ser un entero y es requerido" },
+                created_by: { bsonType: "int", minimum: 1, description: "'created_by' debe ser un entero" },
+                update_by: { bsonType: "int", minimum: 1, description: "'update_by' debe ser un entero" },
+                created_at: { bsonType: "date", description: "'created_at' debe ser una fecha valida" },
+                updated_at: { bsonType: "date", description: "'updated_at' debe ser una fecha valida" },
+                deleted_at: { bsonType: "date", description: "'deleted_at' debe ser una fecha valida" }
+            }
+        }
+    }
+})
+
+use('db_bodegas');
+db.historiales.insertOne({
+    id: 1,
+    cantidad: 1,
+    id_bodega_origen: 1,
+    id_bodega_destino: 1,
+    id_inventario: 1
+})
+
 
 use('db_bodegas');
 db.inventarios.insertOne({
@@ -93,7 +124,6 @@ db.inventarios.insertOne({
     cantidad: 1
 })
 
-
 use('db_bodegas');
 db.bodegas.insertOne({
     id: 1,
@@ -101,7 +131,6 @@ db.bodegas.insertOne({
     id_responsable: 1,
     estado: 1
 })
-
 
 use('db_bodegas');
 db.productos.insertOne({
@@ -121,4 +150,4 @@ db.users.insertOne({
 })
 
 use('db_bodegas');
-db.inventarios.find({})
+db.historiales.find({})
