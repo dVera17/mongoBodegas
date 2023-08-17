@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 import { SignJWT } from 'jose';
 import { plainToClass, classToPlain } from 'class-transformer';
 import Bodega from '../../storage/Bodega.js';
+import Producto from '../../storage/Producto.js';
 config();
 
 const generateToken = async (req, res) => {
