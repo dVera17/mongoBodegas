@@ -11,5 +11,6 @@ const router = Router();
 
 router
     .get('/', limiter.limiterGet(), verifyStructure, productoController.getTotalProducts)
+    .post('/', limiter.limiterPost(), verifyStructure, validateDTOData, productoController.addProducto)
 
 export default router;

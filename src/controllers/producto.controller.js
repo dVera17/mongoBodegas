@@ -43,6 +43,24 @@ const getTotalProducts = async (req, res) => {
     }
 }
 
+const addProducto = async (req, res) => {
+    try {
+        let result = await productos.insertOne(req.body)
+        let resultIntentario = await db.collection("inventarios").insertOne({
+            id: 1,
+            id_bodega: 11,
+            id_producto: req.body.id,
+            cantidad: 12,
+            created_by: 1
+        });
+        res.send(result);
+    } catch (error) {
+        let err = new ErrorHandler(error);
+        res.status(err.status).send(err.showMessage());
+    }
+}
+
 export const productoController = {
-    getTotalProducts
+    getTotalProducts,
+    addProducto
 }
