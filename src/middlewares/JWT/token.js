@@ -3,6 +3,7 @@ import { SignJWT } from 'jose';
 import { plainToClass, classToPlain } from 'class-transformer';
 import Bodega from '../../storage/Bodega.js';
 import Producto from '../../storage/Producto.js';
+import Inventario from '../../storage/Inventario.js';
 config();
 
 const generateToken = async (req, res) => {
