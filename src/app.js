@@ -4,6 +4,7 @@ import routerJWT from './routes/JWT.routes.js';
 import verifyToken from './middlewares/JWT/authToken.js';
 import routerBodegas from './routes/bodega.routes.js';
 import routerProducto from './routes/producto.routes.js';
+import routerInventario from './routes/inventario.routes.js';
 config();
 const app = express();
 app.set('port', process.env.PORT_SERVER);
@@ -13,5 +14,6 @@ app
     .use('/token', routerJWT)
     .use('/api/bodegas', verifyToken, routerBodegas)
     .use('/api/productos', verifyToken, routerProducto)
+    .use('/api/inventario', verifyToken, routerInventario)
 
 export default app;
