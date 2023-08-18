@@ -62,5 +62,5 @@ const addProducto = async (req, res) => {
 
 export const productoController = {
     getTotalProducts,
-    addProducto
+    addProducto,
 }
